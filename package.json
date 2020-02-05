@@ -1,0 +1,54 @@
+{
+  "name": "carousel-lit",
+  "version": "1.0.0",
+  "author": "Joel Voss <mail@joelvoss.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/joelvoss/carousel-lit",
+  "bugs": {
+    "url": "https://github.com/joelvoss/carousel-lit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelvoss/carousel-lit.git"
+  },
+  "main": "dist/carousel-lit.cjs.js",
+  "module": "dist/carousel-lit.esm.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "jvdx build rollup 'src/index.tsx' -f cjs,esm -c",
+    "lint": "jvdx lint",
+    "format": "jvdx format",
+    "test": "jvdx test",
+    "validate": "npm run format && npm run lint && npm run test",
+    "clean": "jvdx clean dist example/dist example/node_modules example/yarn.lock"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.8.4",
+    "@emotion/core": "10.0.27",
+    "memoize-one": "5.1.1",
+    "raf-schd": "4.0.2",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "resize-observer-polyfill": "1.5.1",
+    "smoothscroll-polyfill": "^0.4.4"
+  },
+  "devDependencies": {
+    "@types/jest": "25.1.1",
+    "@types/raf-schd": "4.0.0",
+    "@types/react": "16.9.19",
+    "@types/react-dom": "16.9.5",
+    "@types/smoothscroll-polyfill": "^0.3.1",
+    "jvdx": "0.1.6"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "jvdx pre-commit"
+    }
+  }
+}
