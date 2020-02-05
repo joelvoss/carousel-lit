@@ -18,7 +18,7 @@ import { Carousel, Track, Previous, Next } from 'carousel-lit';
 const items = [
   { id: 'id-0', color: 'aliceblue' },
   { id: 'id-1', color: 'antiquewhite' },
-  { id: 'id-2', color: 'aqua' }
+  { id: 'id-2', color: 'aqua' },
 ];
 
 const itemStyle = {
@@ -66,6 +66,9 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 Have a look inside the `example/` directory to learn more about possible usage
 patterns.
+
+> Note: This component requires and includes both `resize-observer-polyfill` and
+> `smoothscroll-polyfill`.
 
 ## API
 
