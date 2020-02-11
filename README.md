@@ -1,4 +1,4 @@
-# Basic Example
+# carousel-lit
 
 Lit carousel component written in React.
 
