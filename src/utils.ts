@@ -90,7 +90,7 @@ export const useResizeObserver = (): [
   React.Dispatch<any>,
 ] => {
   const [entry, setEntry] = React.useState<ResizeObserverEntry>();
-  const [node, setNode] = React.useState();
+  const [node, setNode] = React.useState<HTMLElement>();
   const observer = React.useRef<ResizeObserver>();
 
   const disconnect = React.useCallback(() => {
