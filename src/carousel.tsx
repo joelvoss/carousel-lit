@@ -12,7 +12,9 @@ import {
   getStartIndexForOffset,
 } from './utils';
 
-smoothscroll.polyfill();
+if (typeof window !== 'undefined') {
+  smoothscroll.polyfill();
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
