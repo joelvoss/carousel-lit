@@ -227,9 +227,24 @@ const button = css`
   padding: 0;
 `;
 
-export const Previous: React.FC<any> = ({ children, ...rest }) => {
+export const Previous: React.FC<any> = ({
+  children,
+  alwaysVisible = false,
+  ...rest
+}) => {
   const { offset, scrollable, contentWidth, itemSizeCache } = useState();
 
+  // Decide, if the component should be rendered.
+  const [visible, setVisibility] = React.useState(true);
+  React.useEffect(() => {
+    if (offset === 0 && alwaysVisible === false) {
+      setVisibility(false);
+    } else {
+      setVisibility(true);
+    }
+  }, [offset, alwaysVisible]);
+
+  // Handle the onClick event of the <button> and scroll to the new offset
   const scroll = () => {
     if (
       !(scrollable && offset !== undefined && contentWidth && itemSizeCache)
@@ -251,18 +266,42 @@ export const Previous: React.FC<any> = ({ children, ...rest }) => {
       behavior: 'smooth',
     });
   };
-  return (
-    <button css={button} onClick={scroll} {...rest}>
-      {children}
-    </button>
-  );
+
+  if (visible) {
+    return (
+      <button css={button} onClick={scroll} {...rest}>
+        {children}
+      </button>
+    );
+  }
+  return null;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
 
-export const Next: React.FC<any> = ({ children, ...rest }) => {
+export const Next: React.FC<any> = ({
+  children,
+  alwaysVisible = false,
+  ...rest
+}) => {
   const { scrollable, offset, contentWidth, itemSizeCache } = useState();
 
+  // Decide, if the component should be rendered.
+  const [visible, setVisibility] = React.useState(true);
+  React.useEffect(() => {
+    if (itemSizeCache != null && contentWidth != null) {
+      const lastItemSize = itemSizeCache[itemSizeCache.length - 1];
+      const endOffset = lastItemSize.offset + lastItemSize.size - contentWidth;
+
+      if (endOffset > 0 && offset === endOffset && alwaysVisible === false) {
+        setVisibility(false);
+      } else {
+        setVisibility(true);
+      }
+    }
+  }, [offset, alwaysVisible, itemSizeCache, contentWidth]);
+
+  // Handle the onClick event of the <button> and scroll to the new offset
   const scroll = () => {
     if (
       !(scrollable && offset !== undefined && contentWidth && itemSizeCache)
@@ -284,9 +323,13 @@ export const Next: React.FC<any> = ({ children, ...rest }) => {
       behavior: 'smooth',
     });
   };
-  return (
-    <button css={button} onClick={scroll} {...rest}>
-      {children}
-    </button>
-  );
+
+  if (visible) {
+    return (
+      <button css={button} onClick={scroll} {...rest}>
+        {children}
+      </button>
+    );
+  }
+  return null;
 };
