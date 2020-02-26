@@ -1,5 +1,11 @@
+export type OnInitializePayload = {
+  contentWidth: number;
+  trackHeight: number;
+};
+
 export interface CarouselProps {
   offset?: number;
+  onInitialize?: (payload: OnInitializePayload) => void;
 }
 
 export interface Entry<T> {

@@ -3,7 +3,13 @@ import React from 'react';
 import { jsx, css } from '@emotion/core';
 import rafSchd from 'raf-schd';
 import smoothscroll from 'smoothscroll-polyfill';
-import { ContextProvider, useDispatch, ActionType, useState } from './context';
+import {
+  ContextProvider,
+  useDispatch,
+  ActionType,
+  useState,
+  ReducerAction,
+} from './context';
 import { CarouselProps, TrackProps } from './types';
 import {
   useResizeObserver,
@@ -22,12 +28,29 @@ const container = css`
   position: relative;
 `;
 
-export const Carousel: React.FC<CarouselProps> = ({ children, offset = 0 }) => {
+export const Carousel: React.FC<CarouselProps> = ({
+  children,
+  offset = 0,
+  onInitialize,
+}) => {
+  const middleware = (action: ReducerAction) => {
+    if (
+      typeof onInitialize === 'function' &&
+      action.type === ActionType.INITIALIZE
+    ) {
+      onInitialize({
+        contentWidth: action.payload.contentWidth || 0,
+        trackHeight: action.payload.trackHeight || 0,
+      });
+    }
+  };
+
   return (
     <ContextProvider
       initialState={{
         offset,
       }}
+      middleware={middleware}
     >
       <div css={container}>{children}</div>
     </ContextProvider>
