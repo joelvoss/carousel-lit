@@ -19,10 +19,14 @@ interface ReducerState {
   range?: [number, number];
 }
 
-interface ReducerAction {
+export interface ReducerAction {
   type: ActionType;
   payload?: any;
 }
+
+type Middleware<T> = (action: T) => void;
+
+////////////////////////////////////////////////////////////////////////////////
 
 // React context for both state and dispatch
 const StateContext = React.createContext<ReducerState>({});
@@ -63,24 +67,45 @@ const reducer = (state: ReducerState, action: ReducerAction) => {
   }
 };
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * <ContextProvider>
  * Wraps a given child with both state and dispatch context providers
  */
 export const ContextProvider: React.FC<{
   initialState?: ReducerState;
-}> = ({ initialState = {}, children }) => {
+  middleware?: Middleware<ReducerAction>;
+}> = ({ initialState = {}, children, middleware }) => {
   const [state, dispatch] = React.useReducer<
     React.Reducer<ReducerState, ReducerAction>
   >(reducer, initialState);
+
+  const applyMiddleware = (
+    dispatch: React.Dispatch<ReducerAction>,
+    middleware?: Middleware<ReducerAction>,
+  ) => (action: ReducerAction) => {
+    dispatch(action);
+    if (typeof middleware === 'function') {
+      middleware(action);
+    }
+  };
+
+  const enhancedDispatch = React.useCallback(
+    applyMiddleware(dispatch, middleware),
+    [],
+  );
+
   return (
     <StateContext.Provider value={state}>
-      <DispatchContext.Provider value={dispatch}>
+      <DispatchContext.Provider value={enhancedDispatch}>
         {children}
       </DispatchContext.Provider>
     </StateContext.Provider>
   );
 };
+
+////////////////////////////////////////////////////////////////////////////////
 
 /**
  * useState exposes the current app state from context
@@ -92,6 +117,8 @@ export function useState() {
   }
   return context;
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 /**
  * useDispatch exposes the current dispatch function from context
