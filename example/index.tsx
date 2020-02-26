@@ -1,7 +1,13 @@
 import 'react-app-polyfill/ie11';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Carousel, Track, Previous, Next } from '../src/index';
+import {
+  Carousel,
+  Track,
+  Previous,
+  Next,
+  OnInitializePayload,
+} from '../src/index';
 import { items } from './fixtures';
 
 const row = {
@@ -18,8 +24,14 @@ const buttonStyle = {
 };
 
 const Example = () => {
+  // `onInitialize` can be called multiple times, e.g. when the Track's
+  // width changes. This function must be idempotent.
+  const onInitialize = (payload: OnInitializePayload) => {
+    console.log('[ info ] onInitialize called', payload);
+  };
+
   return (
-    <Carousel>
+    <Carousel onInitialize={onInitialize}>
       <Track data={items}>
         {({ entry, last }) => (
           <div
@@ -40,9 +52,6 @@ const Example = () => {
         )}
       </Track>
 
-      {/*
-        Render 
-      */}
       <div style={row}>
         <Previous style={buttonStyle}>{'←'}</Previous>
         <Next style={buttonStyle}>{'→'}</Next>
