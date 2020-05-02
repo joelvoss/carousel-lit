@@ -1,5 +1,6 @@
 {
   "name": "carousel-lit",
+  "description": "Lit carousel component written in React",
   "version": "0.2.2",
   "author": "Joel Voss <mail@joelvoss.com>",
   "license": "MIT",
@@ -15,16 +16,12 @@
   "module": "dist/esm/index.es.js",
   "typings": "dist/types/index.d.ts",
   "files": [
-    "dist/"
+    "dist"
   ],
   "scripts": {
-    "build": "jvdx build rollup 'src/index.tsx' -f cjs,esm -c",
-    "lint": "jvdx lint",
-    "format": "jvdx format",
-    "test": "jvdx test",
-    "validate": "npm run format && npm run lint && npm run test",
-    "clean": "jvdx clean dist example/dist example/node_modules example/yarn.lock",
-    "prepublish": "npm run build"
+    "start": "./Taskfile.sh",
+    "test": "./Taskfile.sh test",
+    "prepublish": "./Taskfile.sh build"
   },
   "dependencies": {
     "@babel/runtime": "7.9.6",

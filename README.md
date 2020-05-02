@@ -83,17 +83,13 @@ patterns.
    npm install
 
    # Using yarn
-   yarn install
+   yarn
    ```
 
 2. Validate project setup
 
    ```bash
-   # Using npm
-   npm run validate
-
-   # Using yarn
-   yarn validate
+   ./Taskfile.sh validate
    ```
 
 3. Navigate into the `example/` folder to start your local development
@@ -106,7 +102,7 @@ patterns.
    npm install && npm start
 
    # Using yarn
-   yarn install && yarn start
+   yarn && yarn start
    ```
 
    This will start a simple React application powered by Parcel on `http://localhost:1234`.
