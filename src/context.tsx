@@ -81,19 +81,14 @@ export const ContextProvider: React.FC<{
     React.Reducer<ReducerState, ReducerAction>
   >(reducer, initialState);
 
-  const applyMiddleware = (
-    dispatch: React.Dispatch<ReducerAction>,
-    middleware?: Middleware<ReducerAction>,
-  ) => (action: ReducerAction) => {
-    dispatch(action);
-    if (typeof middleware === 'function') {
-      middleware(action);
-    }
-  };
-
   const enhancedDispatch = React.useCallback(
-    applyMiddleware(dispatch, middleware),
-    [],
+    (action: ReducerAction) => {
+      dispatch(action);
+      if (typeof middleware === 'function') {
+        middleware(action);
+      }
+    },
+    [middleware],
   );
 
   return (
