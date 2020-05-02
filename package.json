@@ -27,7 +27,7 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "@babel/runtime": "7.9.2",
+    "@babel/runtime": "7.9.6",
     "@emotion/core": "10.0.28",
     "memoize-one": "5.1.1",
     "raf-schd": "4.0.2",
@@ -39,10 +39,10 @@
   "devDependencies": {
     "@types/jest": "25.2.1",
     "@types/raf-schd": "4.0.0",
-    "@types/react": "16.9.33",
-    "@types/react-dom": "16.9.6",
+    "@types/react": "16.9.34",
+    "@types/react-dom": "16.9.7",
     "@types/smoothscroll-polyfill": "0.3.1",
-    "jvdx": "1.1.1"
+    "jvdx": "1.2.0"
   },
   "peerDependencies": {
     "react": ">=16.8",
