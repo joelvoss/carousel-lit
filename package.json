@@ -1,7 +1,7 @@
 {
   "name": "carousel-lit",
   "description": "Lit carousel component written in React",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "author": "Joel Voss <mail@joelvoss.com>",
   "license": "MIT",
   "homepage": "https://github.com/joelvoss/carousel-lit",
