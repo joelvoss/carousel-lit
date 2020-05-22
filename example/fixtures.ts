@@ -1,3 +1,10 @@
+export const items_short = [
+  { id: 'id-0', color: 'aliceblue' },
+  { id: 'id-1', color: 'antiquewhite' },
+  { id: 'id-2', color: 'aqua' },
+  { id: 'id-3', color: 'aquamarine' },
+];
+
 export const items = [
   { id: 'id-0', color: 'aliceblue' },
   { id: 'id-1', color: 'antiquewhite' },

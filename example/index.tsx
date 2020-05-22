@@ -8,7 +8,7 @@ import {
   Next,
   OnInitializePayload,
 } from '../src/index';
-import { items } from './fixtures';
+import { items, items_short } from './fixtures';
 
 const row = {
   display: 'flex',
@@ -31,32 +31,121 @@ const Example = () => {
   };
 
   return (
-    <Carousel onInitialize={onInitialize}>
-      <Track data={items}>
-        {({ entry, last }) => (
-          <div
-            key={entry.id}
-            style={{
-              flex: '0 0 200px',
-              width: '200px',
-              height: '150px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: entry.color,
-              margin: `${last ? '0' : '0 0.25rem 0 0'}`,
-            }}
-          >
-            {entry.color}
-          </div>
-        )}
-      </Track>
+    <>
+      <Carousel onInitialize={onInitialize}>
+        <Track data={items}>
+          {({ entry, last }) => (
+            <div
+              key={entry.id}
+              style={{
+                flex: '0 0 200px',
+                width: '200px',
+                height: '150px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: entry.color,
+                margin: `${last ? '0' : '0 0.25rem 0 0'}`,
+              }}
+            >
+              {entry.color}
+            </div>
+          )}
+        </Track>
 
-      <div style={row}>
-        <Previous style={buttonStyle}>{'←'}</Previous>
-        <Next style={buttonStyle}>{'→'}</Next>
-      </div>
-    </Carousel>
+        <div style={row}>
+          <Previous style={buttonStyle}>{'←'}</Previous>
+          <Next style={buttonStyle}>{'→'}</Next>
+        </div>
+      </Carousel>
+
+      <hr />
+
+      <Carousel onInitialize={onInitialize}>
+        <Track data={items_short}>
+          {({ entry, last }) => (
+            <div
+              key={entry.id}
+              style={{
+                flex: '0 0 200px',
+                width: '200px',
+                height: '150px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: entry.color,
+                margin: `${last ? '0' : '0 0.25rem 0 0'}`,
+              }}
+            >
+              {entry.color}
+            </div>
+          )}
+        </Track>
+
+        <div style={row}>
+          <Previous style={buttonStyle}>{'←'}</Previous>
+          <Next style={buttonStyle}>{'→'}</Next>
+        </div>
+      </Carousel>
+
+      <hr />
+
+      <Carousel onInitialize={onInitialize} startAt={10}>
+        <Track data={items}>
+          {({ entry, last }) => (
+            <div
+              key={entry.id}
+              style={{
+                flex: '0 0 200px',
+                width: '200px',
+                height: '150px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: entry.color,
+                margin: `${last ? '0' : '0 0.25rem 0 0'}`,
+              }}
+            >
+              {entry.color}
+            </div>
+          )}
+        </Track>
+
+        <div style={row}>
+          <Previous style={buttonStyle}>{'←'}</Previous>
+          <Next style={buttonStyle}>{'→'}</Next>
+        </div>
+      </Carousel>
+
+      <hr />
+
+      <Carousel onInitialize={onInitialize} startAt={10}>
+        <Track data={items_short}>
+          {({ entry, last }) => (
+            <div
+              key={entry.id}
+              style={{
+                flex: '0 0 200px',
+                width: '200px',
+                height: '150px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: entry.color,
+                margin: `${last ? '0' : '0 0.25rem 0 0'}`,
+              }}
+            >
+              {entry.color}
+            </div>
+          )}
+        </Track>
+
+        <div style={row}>
+          <Previous style={buttonStyle}>{'←'}</Previous>
+          <Next style={buttonStyle}>{'→'}</Next>
+        </div>
+      </Carousel>
+    </>
   );
 };
 
