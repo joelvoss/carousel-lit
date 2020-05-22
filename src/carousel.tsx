@@ -30,7 +30,7 @@ const container = css`
 
 export const Carousel: React.FC<CarouselProps> = ({
   children,
-  offset = 0,
+  startAt = 0,
   onInitialize,
 }) => {
   const middleware = (action: ReducerAction) => {
@@ -47,9 +47,7 @@ export const Carousel: React.FC<CarouselProps> = ({
 
   return (
     <ContextProvider
-      initialState={{
-        offset,
-      }}
+      initialState={{ offset: 0, startAt }}
       middleware={middleware}
     >
       <div css={container}>{children}</div>
@@ -105,6 +103,7 @@ export function Track<T>({
     offset,
     entries,
     range,
+    startAt,
   } = useState();
 
   useLayoutEffect(() => {
@@ -144,6 +143,19 @@ export function Track<T>({
 
       const trackWidth = offset;
 
+      if (
+        newItemSizeCache != null &&
+        startAt != null &&
+        newItemSizeCache[startAt] != null
+      ) {
+        const scrollOffset = newItemSizeCache[startAt].offset;
+        target.scroll({
+          top: 0,
+          left: scrollOffset,
+          behavior: 'auto',
+        });
+      }
+
       dispatch({
         type: ActionType.INITIALIZE,
         payload: {
@@ -155,7 +167,7 @@ export function Track<T>({
         },
       });
     }
-  }, [data.length, dispatch, entry, itemSizeCache, trackHeight]);
+  }, [data.length, dispatch, entry, itemSizeCache, startAt, trackHeight]);
 
   const setScrollOffset = rafSchd((clientWidth, scrollLeft, scrollWidth) => {
     // Prevent Safari's elastic scrolling from causing visual shaking when

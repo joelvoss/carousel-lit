@@ -15,6 +15,7 @@ interface ReducerState {
   trackHeight?: number;
   contentWidth?: number;
   offset?: number;
+  startAt?: number;
   entries?: any[];
   range?: [number, number];
 }

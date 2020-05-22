@@ -4,7 +4,7 @@ export type OnInitializePayload = {
 };
 
 export interface CarouselProps {
-  offset?: number;
+  startAt?: number;
   onInitialize?: (payload: OnInitializePayload) => void;
 }
 
