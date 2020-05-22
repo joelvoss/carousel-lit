@@ -34,10 +34,10 @@
     "smoothscroll-polyfill": "0.4.4"
   },
   "devDependencies": {
-    "@types/jest": "25.2.1",
+    "@types/jest": "25.2.3",
     "@types/raf-schd": "4.0.0",
-    "@types/react": "16.9.34",
-    "@types/react-dom": "16.9.7",
+    "@types/react": "16.9.35",
+    "@types/react-dom": "16.9.8",
     "@types/smoothscroll-polyfill": "0.3.1",
     "jvdx": "1.2.0"
   },
