@@ -260,7 +260,11 @@ export const Previous: React.FC<any> = ({
   // Decide, if the component should be rendered.
   const [visible, setVisibility] = React.useState(true);
   React.useEffect(() => {
-    if (offset === 0 && alwaysVisible === false) {
+    if (alwaysVisible) {
+      return setVisibility(true);
+    }
+
+    if (offset === 0) {
       setVisibility(false);
     } else {
       setVisibility(true);
@@ -316,7 +320,11 @@ export const Next: React.FC<any> = ({
       const lastItemSize = itemSizeCache[itemSizeCache.length - 1];
       const endOffset = lastItemSize.offset + lastItemSize.size - contentWidth;
 
-      if (endOffset > 0 && offset === endOffset && alwaysVisible === false) {
+      if (alwaysVisible) {
+        return setVisibility(true);
+      }
+
+      if (endOffset < 0 || (endOffset > 0 && offset === endOffset)) {
         setVisibility(false);
       } else {
         setVisibility(true);
