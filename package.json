@@ -39,7 +39,7 @@
     "@types/react": "16.9.35",
     "@types/react-dom": "16.9.8",
     "@types/smoothscroll-polyfill": "0.3.1",
-    "jvdx": "1.2.0"
+    "jvdx": "1.4.2"
   },
   "peerDependencies": {
     "react": ">=16.8",
