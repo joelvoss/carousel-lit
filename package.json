@@ -24,7 +24,7 @@
     "prepublish": "./Taskfile.sh build"
   },
   "dependencies": {
-    "@babel/runtime": "7.9.6",
+    "@babel/runtime": "7.10.2",
     "@emotion/core": "10.0.28",
     "memoize-one": "5.1.1",
     "raf-schd": "4.0.2",
@@ -39,7 +39,7 @@
     "@types/react": "16.9.35",
     "@types/react-dom": "16.9.8",
     "@types/smoothscroll-polyfill": "0.3.1",
-    "jvdx": "1.4.2"
+    "jvdx": "1.5.0"
   },
   "peerDependencies": {
     "react": ">=16.8",
