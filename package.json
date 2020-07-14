@@ -1,7 +1,7 @@
 {
   "name": "carousel-lit",
   "description": "Lit carousel component written in React",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "author": "Joel Voss <mail@joelvoss.com>",
   "license": "MIT",
   "homepage": "https://github.com/joelvoss/carousel-lit",
@@ -32,13 +32,13 @@
     "smoothscroll-polyfill": "0.4.4"
   },
   "devDependencies": {
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
     "@types/jest": "26.0.4",
     "@types/raf-schd": "4.0.0",
     "@types/react": "16.9.43",
     "@types/smoothscroll-polyfill": "0.3.1",
-    "jvdx": "2.1.1"
+    "jvdx": "2.1.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   },
   "peerDependencies": {
     "react": ">=16.8",
