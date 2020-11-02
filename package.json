@@ -12,41 +12,48 @@
     "type": "git",
     "url": "git+https://github.com/joelvoss/carousel-lit.git"
   },
-  "main": "dist/cjs/index.cjs.js",
-  "module": "dist/esm/index.es.js",
-  "typings": "dist/types/index.d.ts",
+  "source": "src/index.tsx",
+  "main": "dist/carousel-lit.js",
+  "module": "dist/carousel-lit.es.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "LICENSE"
   ],
   "scripts": {
-    "start": "./Taskfile.sh",
     "test": "./Taskfile.sh test",
-    "prepublish": "./Taskfile.sh build"
+    "prepublishOnly": "./Taskfile.sh build"
   },
   "dependencies": {
-    "@babel/runtime": "7.11.2",
-    "@emotion/core": "10.0.35",
+    "@emotion/core": "10.1.0",
     "memoize-one": "5.1.1",
     "raf-schd": "4.0.2",
     "resize-observer-polyfill": "1.5.1",
     "smoothscroll-polyfill": "0.4.4"
   },
   "devDependencies": {
-    "@types/jest": "26.0.14",
-    "@types/raf-schd": "4.0.0",
-    "@types/react": "16.9.49",
-    "@types/smoothscroll-polyfill": "0.3.1",
-    "jvdx": "2.2.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "@types/jest": "^26.0.15",
+    "@types/raf-schd": "^4.0.0",
+    "@types/react": "^16.9.55",
+    "@types/smoothscroll-polyfill": "^0.3.1",
+    "@jvdx/core": "^0.6.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "peerDependencies": {
     "react": ">=16.8",
     "react-dom": ">=16.8"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "jvdx pre-commit"
-    }
-  }
+  "prettier": "@jvdx/prettier-config",
+  "prettierIgnore": [
+    "tests/",
+    "dist/"
+  ],
+  "eslintConfig": {
+    "extends": "@jvdx/eslint-config"
+  },
+  "eslintIgnore": [
+    "tests/",
+    "dist/"
+  ]
 }

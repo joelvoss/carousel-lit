@@ -4,8 +4,12 @@ Lit carousel component written in React.
 
 ## Install
 
-```text
-npm install carousel-lit  OR  yarn add carousel-lit
+```bash
+# Using npm
+npm install carousel-lit
+
+# Using yarn
+yarn add carousel-lit
 ```
 
 ## Example
@@ -109,4 +113,4 @@ patterns.
 
 ---
 
-This project was bootstrapped with [jvdx](https://github.com/joelvoss/jvdx).
+This project was bootstrapped with [@jvdx/core](https://github.com/joelvoss/jvdx-core).
