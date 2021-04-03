@@ -1,3 +1,8 @@
+**🚨 NOTICE 🚨** \
+This package is no longer maintained.
+
+---
+
 # carousel-lit
 
 Lit carousel component written in React.
